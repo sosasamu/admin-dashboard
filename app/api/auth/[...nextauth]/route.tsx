@@ -1,6 +1,6 @@
 import NextAuth from "next-auth";
 import EmailProvider from "next-auth/providers/email";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
+import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -17,6 +17,7 @@ const handler = NextAuth({
   secret: process.env.SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
+      console.log('entra sign in', user, account, profile);
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;
@@ -46,6 +47,7 @@ const handler = NextAuth({
       // Send properties to the client, like an access_token and user id from a provider.
       //session.token = token.accessToken;
       //session.user.id = token.id;
+      console.log('session', session, token, user);
 
       return session;
     },
