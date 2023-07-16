@@ -17,7 +17,6 @@ const handler = NextAuth({
   secret: process.env.SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      console.log('entra sign in', user, account, profile);
       const isAllowedToSignIn = true;
       if (isAllowedToSignIn) {
         return true;

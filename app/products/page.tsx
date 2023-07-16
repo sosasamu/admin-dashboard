@@ -8,11 +8,17 @@ export default function ProductList() {
 
   return (
     <div>
-      {products?.map((prod) => (
-        <Link href={`/products/${prod.id}`} key={prod.id}>
-          {prod.name}
-        </Link>
-      ))}
+      <ul>
+        {products?.map((prod) => (
+          <li key={prod.id}>
+            <h2>
+              <Link href={`/products/${prod.id}`}>
+                {prod.name}
+              </Link>
+            </h2>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
